@@ -29,7 +29,7 @@
       if (e.key === "Escape") setNav(false);
     });
 
-    window.matchMedia("(min-width: 901px)").addEventListener("change", function (e) {
+    window.matchMedia("(min-width: 1025px)").addEventListener("change", function (e) {
       if (e.matches) setNav(false);
     });
   }

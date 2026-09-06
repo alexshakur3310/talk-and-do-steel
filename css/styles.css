@@ -389,22 +389,41 @@ a:hover { color: var(--blue); }
   color: var(--red-soft);
   margin: 22px 0 0;
 }
-.hero__tagline + .stats { margin-top: 28px; }
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 26px;
-  margin: 36px 0 0;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,.14);
+/* Stat badges — a cluster of three glass tiles beside the hero copy */
+.hero__badges {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
-.stats__item { margin: 0; }
-.stats__num { font: 700 clamp(1.375rem, 1rem + 1.6vw, 1.875rem)/1 var(--display); color: #fff; }
-.stats__label {
-  font: 500 12.5px/1.4 var(--body);
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 15px 8px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+}
+.badge--accent {
+  background: rgba(224,49,39,.16);
+  border-color: rgba(224,49,39,.42);
+}
+.badge__ico { flex: none; width: 24px; height: 24px; color: var(--red-soft); }
+.badge--accent .badge__ico { color: #fff; }
+.badge__text { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.badge__num { font: 800 clamp(.95rem, .72rem + 1.05vw, 1.5rem)/1 var(--display); color: #fff; white-space: nowrap; }
+.badge__label {
+  font: 500 10px/1.3 var(--cond);
+  letter-spacing: .09em;
+  text-transform: uppercase;
   color: var(--on-ink-dim);
-  margin: 6px 0 0;
-  letter-spacing: .04em;
 }
 
 /* ---------- Promise cards ---------- */
@@ -834,6 +853,9 @@ a:hover { color: var(--blue); }
   }
   .hero__actions .btn { width: auto; }
 
+  .hero__badges { gap: 12px; max-width: 460px; }
+  .badge { padding: 18px 12px; }
+
   .feed { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .feed__cta { aspect-ratio: 1; }
 
@@ -908,8 +930,30 @@ a:hover { color: var(--blue); }
   .nav__link.is-current { border-bottom-color: var(--red); }
   .nav__cta { margin: 0 0 0 4px; }
 
-  .hero__inner { padding-block: clamp(72px, 7vw, 96px) clamp(84px, 8vw, 108px); }
-  .hero__copy { max-width: 680px; }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 600px) minmax(0, 260px);
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding-block: clamp(72px, 7vw, 96px) clamp(84px, 8vw, 108px);
+  }
+  .hero__copy { max-width: none; }
+  .hero__badges {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 0;
+    max-width: none;
+  }
+  .badge {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 14px;
+    padding: 18px 20px;
+  }
+  .badge__ico { width: 26px; height: 26px; }
+  .badge__text { align-items: flex-start; }
 
   .products { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
 
